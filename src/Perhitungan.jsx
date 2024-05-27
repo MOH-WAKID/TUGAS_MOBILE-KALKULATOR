@@ -9,6 +9,8 @@ const App = () => {
       calculateResult();
     } else if (button === 'C') {
       clearDisplay();
+    } else if (button === 'x') {
+      setInput((prevInput) => prevInput.slice(0, -1));
     } else {
       setInput((prevInput) => prevInput + button);
     }
@@ -38,6 +40,7 @@ const App = () => {
     '4', '5', '6', '*',
     '1', '2', '3', '-',
     'C', '0', '=', '+',
+    'x'
 
   ];
 
