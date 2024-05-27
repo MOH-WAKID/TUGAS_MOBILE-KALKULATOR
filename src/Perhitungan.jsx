@@ -11,6 +11,8 @@ const App = () => {
       clearDisplay();
     } else if (button === 'x') {
       setInput((prevInput) => prevInput.slice(0, -1));
+    } else if (button === '%') {
+      handlePercentage();
     } else {
       setInput((prevInput) => prevInput + button);
     }
@@ -29,6 +31,16 @@ const App = () => {
     setInput('');
   };
 
+  const handlePercentage = () => {
+    try {
+      const inputValue = parseFloat(input);
+      const result = inputValue / 100;
+      setInput(result.toString());
+    } catch (error) {
+      setInput('Error');
+    }
+  };
+
   const renderButton = (button) => (
     <TouchableOpacity key={button} style={styles.button} onPress={() => handleButtonPress(button)}>
       <Text style={styles.buttonText}>{button}</Text>
@@ -40,7 +52,7 @@ const App = () => {
     '4', '5', '6', '*',
     '1', '2', '3', '-',
     'C', '0', '=', '+',
-    'x'
+    'x', '%'
 
   ];
 
