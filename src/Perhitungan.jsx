@@ -7,9 +7,9 @@ const App = () => {
   const handleButtonPress = (button) => {
     if (button === '=') {
       calculateResult();
-    } else if (button === 'C') {
+    } else if (button === 'Clear') {
       clearDisplay();
-    } else if (button === 'x') {
+    } else if (button === 'Delete') {
       setInput((prevInput) => prevInput.slice(0, -1));
     } else if (button === '%') {
       handlePercentage();
@@ -59,8 +59,8 @@ const App = () => {
     '7', '8', '9', '/',
     '4', '5', '6', '*',
     '1', '2', '3', '-',
-    'C', '0', '=', '+',
-    'x', '%', '.'
+    'Clear', '0', '=', '+',
+    'Delete', '%', '.'
 
   ];
 
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'black',
   },
   displayContainer: {
-    flex: 2,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'flex-end',
     backgroundColor: '#d3d3d3',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   buttonsContainer: {
-    flex: 3,
+    flex: 4,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#d3d3d3',
+    borderColor: 'red',
   },
   buttonText: {
-    fontSize: 30,
+    fontSize: 27,
     color: '#000',
   },
 });
