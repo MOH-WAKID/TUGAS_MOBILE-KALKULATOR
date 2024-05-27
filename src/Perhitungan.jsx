@@ -13,6 +13,8 @@ const App = () => {
       setInput((prevInput) => prevInput.slice(0, -1));
     } else if (button === '%') {
       handlePercentage();
+    } else if (button === '.') {
+      handleDot();
     } else {
       setInput((prevInput) => prevInput + button);
     }
@@ -21,7 +23,7 @@ const App = () => {
   const calculateResult = () => {
     try {
       const result = eval(input);
-      setInput(result.toString());
+      setInput(parseFloat(result.toFixed(10)).toString());
     } catch (error) {
       setInput('Error');
     }
@@ -41,6 +43,12 @@ const App = () => {
     }
   };
 
+  const handleDot = () => {
+    if (!input.includes('.')) {
+      setInput((prevInput) => prevInput + '.');
+    }
+  };
+
   const renderButton = (button) => (
     <TouchableOpacity key={button} style={styles.button} onPress={() => handleButtonPress(button)}>
       <Text style={styles.buttonText}>{button}</Text>
@@ -52,7 +60,7 @@ const App = () => {
     '4', '5', '6', '*',
     '1', '2', '3', '-',
     'C', '0', '=', '+',
-    'x', '%'
+    'x', '%', '.'
 
   ];
 
